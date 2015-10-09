@@ -1,0 +1,21 @@
+{
+  "name": "Angular2-MuscleHamster.github.io",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "npm run tsd",
+    "tsd": "tsd link --config src/tsd.json",
+    "tsc": "tsc -p src -w",
+    "start": "live-server --open=src"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.39",
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.9.2",
+    "systemjs": "^0.19.3"
+  },
+  "devDependencies": {
+    "live-server": "^0.8.1",
+    "tsd": "^0.6.5",
+    "typescript": "^1.6.2"
+  }
+}
