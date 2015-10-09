@@ -12,19 +12,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var http_1 = require('angular2/http');
 var angular2_1 = require('angular2/angular2');
 var InstaSearchService = (function () {
-    function InstaSearchService(_jsonp) {
-        this._jsonp = _jsonp;
+    function InstaSearchService(http) {
+        this.http = http;
     }
     InstaSearchService.prototype.getTags = function () {
-        var _this = this;
-        var promise = this._jsonp.get('https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=JSON_CALLBACK')
-            .subscribe(function (res) {
-            res.json();
-        })
-            .then(function (data) {
-            console.log(data);
-        })
-            .then(function (_) { return _; }, function (e) { return _this._fetchFailed(e); });
+        // https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=?
+        this.tags = [];
+        var promise = this.http.get('https://api.github.com/users/loganarnett')
+            .map(function (response) {
+            return response.json();
+        }).toPromise();
+        // .then((tags: Array<Object>) => {
+        //    this.tags.push(...tags)
+        // 	 return this.tags
+        // })
+        // .then((data: any) => {
+        // 	console.log(data)
+        // })
         return promise;
     };
     InstaSearchService.prototype._fetchFailed = function (error) {
@@ -37,7 +41,7 @@ var InstaSearchService = (function () {
     ;
     InstaSearchService = __decorate([
         angular2_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Jsonp])
+        __metadata('design:paramtypes', [http_1.Http])
     ], InstaSearchService);
     return InstaSearchService;
 })();

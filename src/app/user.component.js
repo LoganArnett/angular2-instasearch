@@ -16,9 +16,14 @@ var UserComponent = (function () {
         this.tagService = tagService;
         this.greeting = 'Search By User';
         this.images = '';
+        this.avatar = '';
     }
     UserComponent.prototype.getTags = function () {
-        this.tagService.getTags();
+        var _this = this;
+        this.tagService.getTags()
+            .then(function (data) {
+            _this.avatar = data.avatar_url;
+        });
     };
     UserComponent = __decorate([
         angular2_1.Component({ selector: 'my-bench' }),

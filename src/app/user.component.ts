@@ -9,10 +9,14 @@ import {InstaSearchService} from './instasearch.service';
 export class UserComponent {
 	public greeting = 'Search By User'
 	public images = '';
+	public avatar = '';
 
 	constructor(private tagService: InstaSearchService) {}
 
 	getTags() {
         this.tagService.getTags()
+				.then((data) => {
+          this.avatar = data.avatar_url
+        });
     }
 }
