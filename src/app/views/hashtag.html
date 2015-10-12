@@ -1,0 +1,11 @@
+<h2>{{greeting}}</h2>
+<section id="mainSearch">
+  <input type="text" [(ng-model)]="hashtag" placeholder="Hashtag"><br>
+  <button (click)="getTags(hashtag)">Insta</button>
+</section>
+
+<ul id="imageList">
+  <li *ng-for="#image of imageList">
+    <img [attr.src]="image.images.standard_resolution.url" alt="" class="thumbnail">
+  </li>
+</ul>

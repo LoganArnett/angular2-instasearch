@@ -12,13 +12,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var http_1 = require('angular2/http');
 var angular2_1 = require('angular2/angular2');
 var InstaSearchService = (function () {
-    function InstaSearchService(http) {
-        this.http = http;
+    function InstaSearchService(jsonp) {
+        this.jsonp = jsonp;
     }
-    InstaSearchService.prototype.getTags = function () {
+    InstaSearchService.prototype.getTags = function (hashtag) {
         // https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=?
+        // https://api.github.com/users/loganarnett
         this.tags = [];
-        var promise = this.http.get('https://api.github.com/users/loganarnett')
+        var promise = this.jsonp.get('https://api.instagram.com/v1/tags/' + hashtag + '/media/recent?callback=JSONP_CALLBACK&access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
             .map(function (response) {
             return response.json();
         }).toPromise();
@@ -41,7 +42,7 @@ var InstaSearchService = (function () {
     ;
     InstaSearchService = __decorate([
         angular2_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Jsonp])
     ], InstaSearchService);
     return InstaSearchService;
 })();

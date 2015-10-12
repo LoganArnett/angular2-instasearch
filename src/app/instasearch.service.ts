@@ -4,13 +4,14 @@ import {Injectable} from 'angular2/angular2';
 
 @Injectable()
 export class InstaSearchService {
-	constructor(private http: Http) { }
+	constructor(private jsonp: Jsonp) { }
   tags: Array<Object>;
-	getTags(): Promise<any> {
+	getTags(hashtag:any): Promise<any> {
 
 // https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=?
+// https://api.github.com/users/loganarnett
     this.tags = [];
-		let promise = this.http.get('https://api.github.com/users/loganarnett')
+		let promise = this.jsonp.get('https://api.instagram.com/v1/tags/' + hashtag + '/media/recent?callback=JSONP_CALLBACK&access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
 		    .map((response: any) =>
 					response.json()
 				).toPromise()

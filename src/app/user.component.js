@@ -14,22 +14,23 @@ var instasearch_service_1 = require('./instasearch.service');
 var UserComponent = (function () {
     function UserComponent(tagService) {
         this.tagService = tagService;
-        this.greeting = 'Search By User';
-        this.images = '';
+        this.greeting = 'Search By Hashtag';
+        this.imageList = '';
         this.avatar = '';
+        this.hashtag = '';
     }
-    UserComponent.prototype.getTags = function () {
+    UserComponent.prototype.getTags = function (hashtag) {
         var _this = this;
-        this.tagService.getTags()
-            .then(function (data) {
-            _this.avatar = data.avatar_url;
+        this.tagService.getTags(hashtag)
+            .then(function (res) {
+            _this.imageList = res.data;
         });
     };
     UserComponent = __decorate([
         angular2_1.Component({ selector: 'my-bench' }),
         angular2_1.View({
-            templateUrl: './app/views/form.html',
-            directives: [angular2_1.FORM_DIRECTIVES]
+            templateUrl: './app/views/hashtag.html',
+            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [instasearch_service_1.InstaSearchService])
     ], UserComponent);

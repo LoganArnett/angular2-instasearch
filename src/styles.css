@@ -44,8 +44,18 @@ my-bench h2 {
   padding-left: 15%;
 }
 
-img {
-  width: 20%;
-  margin: 0 auto;
+#imageList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#imageList li {
+  width: 25%;
+  float: left;
+}
+
+#imageList li img {
+  width: 70%;
+  margin: 0 auto 8%;
   display: block;
 }
