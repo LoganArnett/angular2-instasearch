@@ -1,5 +1,5 @@
 import {Component, FORM_DIRECTIVES, View, CORE_DIRECTIVES} from 'angular2/angular2';
-import {InstaSearchService} from './instasearch.service';
+import {InstaSearchService} from './instasearch.service.ts';
 
 @Component({ selector: 'my-bench'})
 @View({

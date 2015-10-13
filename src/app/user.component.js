@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var instasearch_service_1 = require('./instasearch.service');
+var instasearch_service_ts_1 = require('./instasearch.service.ts');
 var UserComponent = (function () {
     function UserComponent(tagService) {
         this.tagService = tagService;
@@ -32,7 +32,7 @@ var UserComponent = (function () {
             templateUrl: './app/views/hashtag.html',
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [instasearch_service_1.InstaSearchService])
+        __metadata('design:paramtypes', [instasearch_service_ts_1.InstaSearchService])
     ], UserComponent);
     return UserComponent;
 })();

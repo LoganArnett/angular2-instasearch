@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
-var home_component_1 = require('./home.component');
-var user_component_1 = require('./user.component');
+var home_component_ts_1 = require('./home.component.ts');
+var user_component_ts_1 = require('./user.component.ts');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -23,8 +23,8 @@ var AppComponent = (function () {
             directives: [router_1.ROUTER_DIRECTIVES]
         }),
         router_1.RouteConfig([
-            { path: '/', as: 'Home', component: home_component_1.HomeComponent },
-            { path: '/users', as: 'Users', component: user_component_1.UserComponent }
+            { path: '/', as: 'Home', component: home_component_ts_1.HomeComponent },
+            { path: '/users', as: 'Users', component: user_component_ts_1.UserComponent }
         ]), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
