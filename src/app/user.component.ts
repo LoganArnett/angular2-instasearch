@@ -15,7 +15,7 @@ export class UserComponent {
 	constructor(private tagService: InstaSearchService) {}
 
 	getTags(hashtag:any) {
-        this.tagService.getTags(hashtag)
+        this.tagService.getHashTag(hashtag)
 				.then((res) => {
           this.imageList = res.data
         });

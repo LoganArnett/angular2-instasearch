@@ -6,22 +6,12 @@ import {Injectable} from 'angular2/angular2';
 export class InstaSearchService {
 	constructor(private jsonp: Jsonp) { }
   tags: Array<Object>;
-	getTags(hashtag:any): Promise<any> {
+	getRecent(hashtag:any): Promise<any> {
 
-// https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=?
-// https://api.github.com/users/loganarnett
-    this.tags = [];
 		let promise = this.jsonp.get('https://api.instagram.com/v1/tags/' + hashtag + '/media/recent?callback=JSONP_CALLBACK&access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
 		    .map((response: any) =>
 					response.json()
 				).toPromise()
-				// .then((tags: Array<Object>) => {
-				//    this.tags.push(...tags)
-				// 	 return this.tags
-				// })
-			// .then((data: any) => {
-			// 	console.log(data)
-			// })
 		return promise;
 	}
 
@@ -30,14 +20,7 @@ export class InstaSearchService {
 		return Promise.reject(error);
 	}
 
-	getTag(name: string) {
-		return this.getTags()
+	getHashTag(name: string) {
+		return this.getRecent(name)
 		};
 	}
-	// constructor(http:Http) {
-  //   http.request('https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
-	// 	.subscribe((res: any) => {
-  //     this.images = res.json();
-	// 		console.log(res)
-  //   })
-  // }

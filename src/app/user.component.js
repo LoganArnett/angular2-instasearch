@@ -21,7 +21,7 @@ var UserComponent = (function () {
     }
     UserComponent.prototype.getTags = function (hashtag) {
         var _this = this;
-        this.tagService.getTags(hashtag)
+        this.tagService.getHashTag(hashtag)
             .then(function (res) {
             _this.imageList = res.data;
         });

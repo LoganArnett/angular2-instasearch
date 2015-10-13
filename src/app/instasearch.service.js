@@ -15,29 +15,19 @@ var InstaSearchService = (function () {
     function InstaSearchService(jsonp) {
         this.jsonp = jsonp;
     }
-    InstaSearchService.prototype.getTags = function (hashtag) {
-        // https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6c&callback=?
-        // https://api.github.com/users/loganarnett
-        this.tags = [];
+    InstaSearchService.prototype.getRecent = function (hashtag) {
         var promise = this.jsonp.get('https://api.instagram.com/v1/tags/' + hashtag + '/media/recent?callback=JSONP_CALLBACK&access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
             .map(function (response) {
             return response.json();
         }).toPromise();
-        // .then((tags: Array<Object>) => {
-        //    this.tags.push(...tags)
-        // 	 return this.tags
-        // })
-        // .then((data: any) => {
-        // 	console.log(data)
-        // })
         return promise;
     };
     InstaSearchService.prototype._fetchFailed = function (error) {
         console.error(error);
         return Promise.reject(error);
     };
-    InstaSearchService.prototype.getTag = function (name) {
-        return this.getTags();
+    InstaSearchService.prototype.getHashTag = function (name) {
+        return this.getRecent(name);
     };
     ;
     InstaSearchService = __decorate([
@@ -47,11 +37,4 @@ var InstaSearchService = (function () {
     return InstaSearchService;
 })();
 exports.InstaSearchService = InstaSearchService;
-// constructor(http:Http) {
-//   http.request('https://api.instagram.com/v1/tags/basketball/media/recent?access_token=37506794.47ea4e0.dcf79b644ca54f39a74c52037598b1b6')
-// 	.subscribe((res: any) => {
-//     this.images = res.json();
-// 		console.log(res)
-//   })
-// }
 //# sourceMappingURL=instasearch.service.js.map
